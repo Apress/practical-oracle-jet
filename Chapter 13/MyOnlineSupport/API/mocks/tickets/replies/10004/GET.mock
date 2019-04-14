@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+    "notes": [
+       {
+          "id": 1,
+          "author": "Oliver Butler",
+          "timestamp": "2018-06-25T15:20:24+00:00",
+          "note": "Hi Charlotte, <br /><br />You are not able to add the code into your website using custom HTML with your package. <br /><br /> Unfortunately in order to do this you will need to upgrade your package. You can find more information over on our services page. <br /><br />Please let me know if you have anymore questions.<br /><br />Kind Regards<br />Oliver",
+"attachment": []
+        }
+      ]
+}

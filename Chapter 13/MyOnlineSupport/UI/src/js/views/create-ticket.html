@@ -1,0 +1,57 @@
+<div id="create-new-ticket" class="oj-sm-padding-4x">
+    <div class="oj-sm-padding-4x">
+        <h2>Create a new ticket</h2>
+        <oj-label for="title" class="oj-sm-padding-2x-top" show-required="true">Title:</oj-label>
+        <oj-input-text id="title" value="{{newTicketTitle}}" required="true"></oj-input-text>
+        <oj-label for="pirority" class="oj-sm-padding-2x-top" show-required="true">Priority:</oj-label>
+        <oj-select-one id="pirority" value="{{newTicketPriority}}">
+            <oj-option value="1">1 - Blocker</oj-option>
+            <oj-option value="2">2 - Critical</oj-option>
+            <oj-option value="3">3 - High</oj-option>
+            <oj-option value="4">4 - Medium</oj-option>
+            <oj-option value="5">5 - Low</oj-option>
+        </oj-select-one>
+        <oj-label for="new-ticket-area" class="oj-sm-padding-2x-top" show-required="true">Issue Summary:</oj-label>
+        <div id="new-ticket-area"></div>
+        <oj-bind-if test="[[messageTextEmpty]]">
+            <div class="oj-messaging-inline-container">
+                <div class="oj-message oj-message-error">
+                    <span class="oj-component-icon oj-message-status-icon oj-message-error-icon" title="Error" role="img"></span>
+                    <span class="oj-message-content">
+                        <div class="oj-message-summary">Value is required.</div>
+                        <div class="oj-message-detail"><span>You must enter a value.</span>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </oj-bind-if>
+        <div class="oj-flex-bar oj-sm-padding-2x-top">
+            <div class="oj-flex-bar-start oj-sm-align-items-center">
+                <oj-file-picker class='oj-filepicker-custom oj-sm-padding-2x-end' id="fileUpload" selectOn="click"
+                    on-oj-select='[[fileSelectionListener]]' accept="[[allowedFileTypes]]" selection-mode='single'>
+                    <oj-button slot="trigger">
+                        <span slot="startIcon" class='fas fa-upload'></span>
+                        File Upload
+                    </oj-button>
+                </oj-file-picker>
+                <oj-bind-if test='[[uploadedFile()[0]]]'>
+                    <oj-bind-text value="[[uploadedFile()[0].name]]"></oj-bind-text>
+                </oj-bind-if>
+            </div>
+            <div class="oj-flex-bar-end">
+                <oj-bind-if test="[[createInProgress() === false]]">
+                    <oj-button id='reply-button' on-oj-action='[[createTicket]]' class="oj-button-confirm" disabled="[[createInProgress]]">
+                        <span slot="startIcon" class="fas fa-reply"></span>
+                        Create Ticket
+                    </oj-button>
+                </oj-bind-if>
+                <oj-bind-if test="[[createInProgress]]">
+                    <oj-button id='create-button' class="oj-button-confirm" disabled="true">
+                        <span slot="startIcon" class="fas fa-circle-notch fa-spin"></span>
+                        Creating Ticket
+                    </oj-button>
+                </oj-bind-if>
+            </div>
+        </div>
+    </div>
+</div>

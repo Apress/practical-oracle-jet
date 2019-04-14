@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+  "name": "James Potts",
+  "role": "Senior Support Assistant",
+  "bio": "I am here to help you with any support issues and to ensure you have a great experience, don't hesitate to ask me anything!",
+  "ratingValue": 4.5
+}

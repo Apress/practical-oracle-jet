@@ -1,0 +1,15 @@
+<div class="oj-flex oj-sm-flex-direction-column oj-sm-align-items-center oj-sm-padding-4x">
+        <oj-avatar role="img" aria-label="Representative Avatar" size="md"></oj-avatar>
+        <span data-bind="text: name" class="oj-sm-padding-2x-vertical"></span>
+        <strong data-bind="text: role" class="oj-sm-padding-2x-vertical"></strong>
+        <span data-bind="text: bio" class="oj-sm-padding-2x-vertical"></span>
+    
+        <span class="oj-sm-padding-4x-top">Average Rating</span>
+        <oj-rating-gauge
+            id="ticket-rating"
+            value="[[ratingValue]]"
+            readonly 
+            selected-state.color="#E74C3C" 
+            style="width:120px;height:25px;">
+        </oj-rating-gauge>
+</div>

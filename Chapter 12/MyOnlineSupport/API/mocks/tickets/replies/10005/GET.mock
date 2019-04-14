@@ -1,0 +1,22 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+    "notes": [
+       {
+          "id": 1,
+          "author": "Nick Dobson",
+          "timestamp": "2018-07-09T09:33:11+00:00",
+          "note": "Hi Charlotte, thank you for your enquiry! <br /><br />I have now upgraded your account for you. <br /><br />You will now have received an e-mail with your updated billing amount and schedule. <br /><br />Please let me know if you have any questions.",
+"attachment": []
+        },
+        {
+          "id": 2,
+          "author": "Charlotte Illidge",
+          "timestamp": "2018-07-09T09:35:07+00:00",
+          "note": "Hi Nick, thank you, that worked great.",
+"attachment": []
+        }
+      ]
+}

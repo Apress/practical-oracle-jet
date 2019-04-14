@@ -1,0 +1,104 @@
+<div class="oj-flex">
+  <!-- Left Column Start-->
+  <div class="oj-sm-3 left-column-container">
+    <!-- Search functionality -->
+    <oj-input-text 
+      class="oj-sm-12 oj-sm-padding-3x-vertical oj-sm-padding-2x-horizontal">
+    </oj-input-text>
+    <!-- Search functionality -->
+
+    <!-- Ticket List -->
+    <div class="oj-flex list-view-container">
+      <oj-list-view id='ticket-list'
+      aria-label='ticket-list'
+      class='oj-sm-12'
+      data='[[ticketListDataSource]]'
+      selection-mode='single'
+      selection-required='true'
+      item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('ticket-list-template', true)]]"
+      selection="{{selectedTicket}}"
+      on-selection-changed="[[listSelectionChanged]]">
+      </oj-list-view>
+    </div>
+    <script type="text/html" id="ticket-list-template">
+      <li data-bind="attr: {id: $data['id']}">
+        <div class="oj-flex">
+          <div class="oj-sm-8">
+            <strong>Ticket ID:</strong>	
+            <oj-bind-text value="[[id]]"></oj-bind-text>
+          </div>
+          <div class="oj-sm-4">
+            <oj-bind-text value="[[$parent.formatDate(dateCreated)]]"></oj-bind-text>
+          </div>
+        </div>
+        <div class="oj-flex oj-sm-padding-2x-top oj-sm-padding-2x-bottom">
+          <oj-bind-text value="[[title]]"></oj-bind-text>
+        </div>
+        <div class="oj-flex">
+          <div class="oj-sm-8">
+            <strong>Status:</strong> 
+            <oj-bind-text value="[[status]]"></oj-bind-text>   
+          </div>
+          <div class="oj-sm-4">
+            <oj-bind-text value="[[priority]]"></oj-bind-text>   
+          </div>
+        </div>
+      </li>
+    </script>
+    <!-- Ticket List -->
+  </div>
+  <!-- Left Column End-->
+
+  <!-- Right Column Start-->
+  <div class="oj-sm-9"> 
+    <!-- Tab Bar -->
+    <div class="oj-flex oj-sm-padding-2x-top tabbar-container">
+      <oj-conveyor-belt class="oj-sm-9">
+        <oj-tab-bar 
+          contextmenu="tabmenu" 
+          id="ticket-tab-bar" 
+          selection="{{selectedTabItem}}"
+          on-selection-changed="[[tabSelectionChanged]]"
+          edge="top" 
+          data="[[tabBarDataSource]]"
+          item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('tab-template', true)]]" 
+          on-oj-remove="[[onTabRemove]]" 
+          class="oj-sm-12 oj-sm-condense">
+          <oj-menu slot="contextMenu" style="display:none" aria-label="Actions">
+            <oj-option data-oj-command="oj-tabbar-remove">
+              Removable
+            </oj-option>
+          </oj-menu>
+        </oj-tab-bar>
+      </oj-conveyor-belt>
+    </div>
+    <script type="text/html" id="tab-template">
+      <li class="oj-removable" data-bind="css:{'oj-disabled' : $data['disabled']=='true'}">
+        <a href="#">
+            <oj-bind-text value='[[name]]'></oj-bind-text>
+          </a>
+      </li>
+    </script>
+    <!-- Tab Bar-->
+    <!-- Selected Ticket View -->
+    <div class="oj-flex">
+      <div class="oj-sm-9 view-ticket-container">
+        <div data-bind="ojModule: { name: 'view-ticket',
+                    params: {ticketModel: selectedTicketModel}
+                    }"
+          class="oj-sm-padding-4x">
+        </div>
+      </div>
+      <div class="oj-sm-3 support-rep-container">
+          <div data-bind="ojModule: { 
+            name: 'view-representative',
+            params: { repId: selectedTicketRepId() }
+            }" class="oj-sm-padding-4x">
+          </div>
+      </div>
+    </div>
+    <!-- Selected Ticket View -->
+
+  </div>
+  <!-- Right Column End -->
+</div>

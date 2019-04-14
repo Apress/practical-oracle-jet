@@ -1,0 +1,142 @@
+<div class="oj-flex oj-sm-padding-4x oj-sm-flex-direction-column">
+
+    <!-- Ticket staus, rating and buttons -->
+    <div class="oj-flex oj-sm-padding-2x-bottom">
+        <span class="oj-sm-5 oj-sm-padding-4x-end oj-text-sm" data-bind="text: ticketStatus(status())"></span>
+        <oj-button class="oj-flex-item oj-sm-padding-1x-end" on-oj-action='[[scrollToReply]]'>Reply</oj-button>
+        <oj-button class="oj-flex-item oj-sm-padding-1x-end">Escalate Priority</oj-button>
+        <oj-button class="oj-flex-item oj-sm-padding-1x-end">Close Ticket</oj-button>
+    </div>
+    <!-- Ticket staus, rating and buttons -->
+
+    <!-- Ticket header information -->
+    <div class="oj-flex oj-sm-padding-4x-vertical">
+
+        <div class="oj-sm-1 oj-sm-padding-3x-top">
+            <oj-avatar role="img" aria-label="Author Avatar" size="xs">
+            </oj-avatar>
+        </div>
+
+        <div class="oj-sm-8 oj-sm-flex-direction-column">
+            <h2 data-bind="text: title"></h2>
+            <div data-bind="text: author"></div>
+            <oj-bind-if test='[[attachment()[0]]]'>
+                <div class="oj-flex oj-sm-padding-2x-top">
+                    <span class="fas fa-paperclip"></span>
+                    <div class="oj-sm-padding-1x-horizontal" data-bind="text: attachment()[0].filePath"></div>
+                    (<div data-bind="text: attachment()[0].fileSize"></div>)
+                </div>
+            </oj-bind-if>
+        </div>
+
+        <div class="oj-sm-2 oj-text-sm oj-sm-padding-2x-vertical">
+            <div data-bind="text: dateDifference(dateCreated())" :title="[[formatDate(dateCreated())]]">
+            </div>
+        </div>
+
+        <div class="oj-sm-1"></div>
+    </div>
+    <!-- Ticket header information -->
+
+    <!-- Ticket message -->
+    <div class="oj-flex oj-sm-padding-2x-vertical">
+        <div class="oj-sm-1"></div>
+        <div class="oj-sm-9 oj-sm-padding-4x-bottom" data-bind="html: message"></div>
+        <div class="oj-sm-2"></div>
+    </div>
+    <!-- Ticket message -->
+
+    <!-- List to render ticket replies -->
+    <oj-list-view 
+        id="reply-list-view" 
+        aria-label="ticket reply list" 
+        class="oj-sm-12" 
+        data="[[ticketRepliesDataSource]]" 
+     item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('ticket-replies-template', true)]]">
+    </oj-list-view>
+    <!-- List to render ticket replies -->
+
+    <!-- List Template -->
+    <script type="text/html" id="ticket-replies-template">
+        <li data-bind="attr: {id: $data['id']}">
+            <!-- First row of list item, sets up the item header -->
+            <div class="oj-flex oj-sm-padding-4x-vertical" 
+                data-bind="style: { flexDirection: author !== $parent.author() ? 'row-reverse' : '' }">
+
+                <div class="oj-flex-item oj-sm-1 oj-sm-padding-2x-top"
+                    data-bind="css: author !== $parent.author() ? 'oj-sm-padding-4x-start' : 'oj-sm-padding-4x-end'">
+                    <oj-avatar 
+                        role="img" 
+                        aria-label="User Avatar" 
+                        size="xs">
+                    </oj-avatar>
+                </div>
+
+                <div class="oj-sm-8 oj-sm-flex-direction-column">
+                    <h2 data-bind="text: 'RE: ' + $parent.title(),
+                                    style: { textAlign: author !== $parent.author() ? 'right' : '' }">
+                    </h2>
+                    <div data-bind="text: author,
+                                    style: { textAlign: author !== $parent.author() ? 'right' : '' }">
+                    </div>
+                    <oj-bind-if test='[[attachment[0]]]'>
+                        <div class="oj-flex oj-sm-padding-2x-top" data-bind="style: { textAlign: author !== $parent.author() ? 'right' : '' }">
+                            <span class="fas fa-paperclip"></span>
+                            <div class="oj-sm-padding-1x-horizontal" data-bind="text: attachment[0].filePath"></div>
+                            (<div data-bind="text: attachment[0].fileSize"></div>)
+                        </div>
+                    </oj-bind-if>
+                </div>
+
+                <div class="oj-sm-2 oj-text-sm oj-sm-padding-2x-vertical">
+                    <div 
+                        data-bind="text: $parent.dateDifference(timestamp)" 
+                        :title="[[$parent.formatDate(timestamp)]]">
+                    </div>
+                </div>
+
+                <div class="oj-sm-1">
+                </div>
+            </div>
+          
+            <!-- Second row in list item, outputs the message content -->
+            <div class="oj-flex oj-sm-padding-2x-vertical">
+                <div class="oj-sm-1"></div>
+                <div class="oj-sm-10 oj-sm-padding-4x-bottom" 
+                    data-bind="html: note"></div>
+                <div class="oj-sm-1"></div>
+            </div>
+        </li>
+    </script>
+    <!-- List Template -->
+
+    <h3 class="oj-sm-padding-4x">Reply</h3>
+    <div id="ticket-reply-area"></div>
+    <div class="oj-flex-bar">
+        <div class="oj-flex-bar-start oj-sm-align-items-center">
+            <oj-file-picker class='oj-filepicker-custom oj-sm-padding-2x-end'
+                id="fileUpload"
+                selectOn='click'
+                on-oj-select='[[fileSelectionListener]]'
+                accept="[[allowedFileTypes]]"
+                selection-mode='single'>
+                <oj-button slot='trigger'> 
+                    <span slot='startIcon' class='fas fa-upload'></span>
+                    Upload
+                </oj-button>
+            </oj-file-picker>
+            <oj-bind-if test='[[uploadedFile()[0]]]'>
+                <oj-bind-text value="[[uploadedFile()[0].name]]"></oj-bind-text>
+            </oj-bind-if>
+        </div>
+        <div class="oj-flex-bar-end">
+            <oj-button id='reply-button' on-oj-action='[[ticketReply]]'>
+                <span slot='startIcon' class='fas fa-reply'></span>
+                Reply
+            </oj-button>
+        </div>
+</div>
+ 
+
+
+</div>

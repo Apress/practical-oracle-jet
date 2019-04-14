@@ -1,0 +1,28 @@
+{
+  "name": "inline-search",
+  "displayName": "inline-search",
+  "description": "A search component for searching through a collection",
+  "version": "1.0.0",
+  "jetVersion": "^6.0.0",
+  "properties": {
+    "data": {
+      "description": "Collection passed into the component that can be filtered down.",
+      "type": "oj.Collection",
+      "writeback": true
+    },
+    "models": {
+      "description": "An array of models passed to the component used to reset the collection.",
+      "type": "Array"
+    },
+    "filterAttribute": {
+      "description": "The attribute that the search string will be matched against.",
+      "type": "string"
+    }
+  },
+  "methods": {
+    "resetSearch": {
+      "description": "A function to clear the search value",
+      "internalName": "_resetSearch"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+h1,h2, h3 {
+    color: $brand-color;
+}
+
+.oj-web-applayout-header {
+    background-color: $brand-color;
+    box-shadow: 0 8px 16px 0 rgba($brand-color, 0.2);
+}
+
+.oj-web-applayout-header-title {
+    color: $base-white-color;
+}
+
+.oj-web-applayout-footer {
+    min-height:0;
+}
+
+header {
+    span {
+        color: $base-white-color;
+    }
+
+    .oj-hover {
+        background-color:transparent !important;
+    }
+}

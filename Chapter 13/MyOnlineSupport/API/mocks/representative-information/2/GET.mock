@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+  "name": "Nick Dobson",
+  "role": "Account Management",
+  "bio": "I am apart of the accounts team. Any issues with your account, such as billing, upgrades or cancellations, I am the guy to come to!",
+  "ratingValue": 4.5
+}

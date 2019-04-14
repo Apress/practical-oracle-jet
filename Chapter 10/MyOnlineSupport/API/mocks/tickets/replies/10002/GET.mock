@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+    "notes": [
+        {
+          "id": 1,
+          "author": "Imogen Gifford",
+          "timestamp": "2018-06-11T18:24:29+00:00",
+          "note": "Hey! I'm Imogen and I will be assisting you today.<br /><br /> Would you be able to let me know the external image services you are using? Do you have any idea of how many images you are looking to migrate? <br /><br />Imogen",
+"attachment": []
+        }
+      ]
+}

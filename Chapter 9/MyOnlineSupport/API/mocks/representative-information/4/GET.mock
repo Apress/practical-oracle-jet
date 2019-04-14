@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+  "name": "Reece Jacques",
+  "role": "Data Guy",
+  "bio": "I spent a long time in university studying Chemistry, where I found a natural talent in data processing. I am responsible for everything data related, and happy to answer any questions!",
+  "ratingValue": 4.5
+}

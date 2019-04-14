@@ -1,0 +1,22 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+    "notes": [
+     {
+          "id": 1,
+          "author": "Dom Ainsley",
+          "timestamp": "2018-06-11T17:24:32+00:00",
+          "note": "Hi there! My name is Dom and I will helping you today!<br /><br />The nameservers that you require are as follows:<br /><br />ns1.practicalhosting.co.uk<br />ns2.practicalhosting.co.uk.<br /><br />I have added the domain (thestylearchive.co.uk) to your account, so as soon as your DNS has transfered and propagated, you will be good to go!<br /><br />Any further questions - please let me know.<br /><br />Dom",
+"attachment": []
+        },
+        {
+          "id": 2,
+          "author": "Charlotte Illidge",
+          "timestamp": "2018-06-11T17:39:46+00:00",
+          "note": "Hi Dom, thanks for your help. Everything seems to be working now.<br /><br /> Charlotte",
+"attachment": []
+        }
+      ]
+}

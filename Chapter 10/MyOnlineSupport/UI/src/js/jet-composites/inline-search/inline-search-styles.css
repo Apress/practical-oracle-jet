@@ -1,0 +1,8 @@
+inline-search:not(.oj-complete){
+  visibility: hidden;
+}
+
+inline-search{
+	min-height: 50px;
+	width: 50px;
+}

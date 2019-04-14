@@ -1,0 +1,22 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+    "notes": [
+        {
+          "id": 1,
+          "author": "James Potts",
+          "timestamp": "2018-07-12T16:32:47+00:00",
+          "note": "Hi there! My name is James (or Jim!) and I will be here to help you through this problem. <br /><br />Could you please let me know the last time the website was available?<br /><br /> I have instructed one of our engineers to look into this now and they are working hard to get your website back online.<br /><br /> Jim",
+"attachment": []
+        },
+        {
+          "id": 2,
+          "author": "Charlotte Illidge",
+          "timestamp": "2018-07-12T16:40:23+00:00",
+          "note": "Hi, thank you for your quick reply.<br /><br /> The website has been down for about 2 hours now. <br /><br />I look forward to hearing back.",
+"attachment": []
+        }
+      ]
+}

@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+  "name": "Dom Ainsley",
+  "role": "Domain Specialist",
+  "bio": "I work as part of the domain department to help customers with any domain realted struggles.",
+  "ratingValue": 4
+}

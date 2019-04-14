@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+    "notes": [
+        {
+          "id": 1,
+          "author": "Reece Jacques",
+          "timestamp": "2018-06-11T13:43:54+00:00",
+          "note": "Hi Charlotte, <br /><br />We cannot upload that data for you, but it is really easy for you to do it! <br /><br />Head to your control panel, then to databases and hit the data import tool. Follow the steps and the data will be there in no time!<br /><br />Please let me know if you have any further questions.<br /><br />Reece",
+"attachment": []
+        }
+      ]
+}
